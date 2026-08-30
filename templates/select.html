@@ -1,0 +1,53 @@
+#ポケモンをselectするよ
+{% extends "layout.html" %}
+{% block content %}
+
+
+<h1>ポケモンを選ぼう！</h1>
+
+
+
+<form action="/select" method="post">
+
+    {% for i in range(4) %}
+
+    <div class="pokemon_card">
+
+        <img src="{{ url_for('static', filename=pokemon_list[i].image) }}"width="150">
+
+        <div class="pokemon_info">
+
+            <h2>{{ pokemon_list[i].name }}</h2>
+
+            <p>タイプ:{{ pokemon_list[i].type }}</p>
+
+            <p>
+                {{ pokemon_list[i].description }}
+            </p>
+
+            <p>
+                {% for skill  in pokemon_list[i].damage.keys()  %}
+                    <li>
+                        {{ skill[0] }}({{ skill[1] }}タイプ)
+                        威力：{{ pokemon_list[i].damage[skill] }}
+                    </li>
+                {% endfor %}
+            </p>
+
+            <button type="submit" name="pokemon" value="{{ i }}">
+                {{ pokemon_list[i].name }}を選択
+            </button>
+
+            <br>
+        </div>
+
+    </div>
+    {% endfor %}
+
+</form>
+
+<a href="/">
+    <button>戻る</button>
+</a>
+
+{% endblock %}

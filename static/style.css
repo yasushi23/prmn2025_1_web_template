@@ -1,0 +1,68 @@
+
+
+.doctor_area{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin: 30px 0;
+}
+
+.doctor img{
+    width: 280px;
+}
+
+.speech{
+    flex: 1;
+    padding: 25px;
+    border: 3px solid #333;
+    border-radius: 20px;
+    background-color: #f8f8f8;
+
+}
+
+.speech h2 {
+    margin-top: 0;
+}
+
+.speech p {
+    line-height: 1.8;
+}
+
+.pokemon_card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin: 20px 0;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 15px;
+}
+
+.pokemon_card img {
+    width: 150px;
+}
+
+.pokemon_info {
+    flex: 1;
+}
+
+.status_up{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.hp_bar {
+    width: 250px;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #ddd;
+    overflow: hidden;
+}
+
+.hp-bar-inner {
+    height: 100%;
+    background-color: green;
+    transition: width 0.3s;
+}

@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% if user_pokemon.hp > 0 and computer_pokemon.hp <= 0 %} 
+    <h1>
+        相手の{{ computer_pokemon.name }}はたおれた
+
+         コンピューターのキタイチとの勝負に勝った！
+    </h1>
+
+    <p>{{ user_pokemon.name }}は経験値を獲得し、レベルが1上がった！</p>
+
+    <div class="status_up">
+
+        <p> 
+            レベル:
+            {{ user_pokemon.level - 1 }}  ➡  {{ user_pokemon.level }}
+        </p>
+
+        <p>
+            最大HP:
+            {{ user_pokemon.max_hp - 20 }} ➡  {{ user_pokemon.max_hp}}
+        </p>
+
+        <img src="{{ url_for('static', filename=user_pokemon.image)  }}"width='80'>
+    
+    </div>
+
+        {% if evolved %}
+            <p>おめでとう！{{ user_pokemon.name }}に進化した！</p>
+        {% endif %}
+
+{% endif %}
+
+{% if user_pokemon.hp <= 0 and computer_pokemon.hp> 0 %}
+    <h2>
+        {{ user_pokemon.name }}はたおれた
+
+        コンピューターのキタイチとの勝負に負けてしまった
+
+        目の前がまっくらになった・・・
+    </h2>
+{% endif %}
+
+<h3>
+     勝負を続ける？
+</h3>
+
+<a href="/select">
+    <button>つづける</button>
+</a>
+
+<a href="/reset">
+    <button>おわる</button>
+</a>
+
+{% endblock %}

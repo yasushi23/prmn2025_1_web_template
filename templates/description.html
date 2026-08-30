@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>オーキド博士によりポケモンバトル講座</h1>
+
+<h2>オーキド博士</h2>
+
+<div class="doctor_area">
+
+    <div class="doctor">
+        <img src="{{ url_for('static', filename='oak.png') }}"alt="オーキド博士">
+    </div>
+
+    <div class="speech">
+
+        <h2>{{ description.title }}</h2>
+
+        <p>
+            {{ description.text }}
+        </p>
+
+    </div>
+
+</div>
+
+{% if max_page > page %}
+
+    <a href="{{ url_for('description', page = page+1) }}">
+        <button>▶次へ</button>
+    </a>
+
+{% else %}
+
+    <a href="/select">
+        <button>バトルをはじめる！</button>
+    </a>
+
+{% endif %}
+
+<br><br>
+
+<a href="/">
+    <button>タイトルに戻る</button>
+</a>
+
+
+{% endblock %}

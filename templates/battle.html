@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h1>バトル！</h1>
+<p>
+    [{{ user_pokemon.name }}:Lv.{{ user_pokemon.level }}]
+    HP:{{user_pokemon.hp}}/{{user_pokemon.max_hp}}
+    <img src="{{ url_for('static', filename=user_pokemon.image) }}"width="50">
+</p>
+
+<div class="hp_bar">
+    <div class="hp-bar-inner" 
+         style="width: {{ user_pokemon.hp / user_pokemon.max_hp *100 }}%"> 
+    </div>
+</div>
+
+<p>
+    [{{ computer_pokemon.name }}:Lv.{{ computer_pokemon.level }}]
+    HP:{{computer_pokemon.hp}}/{{computer_pokemon.max_hp}}
+    <img src="{{ url_for('static', filename=computer_pokemon.image) }}" width="50">
+</p>
+
+<div class="hp_bar">
+    <div class="hp-bar-inner" 
+         style="width: {{ computer_pokemon.hp / computer_pokemon.max_hp * 100 }}%"> 
+    </div>
+</div>
+
+<h2>{{ user_pokemon.name }}はどうする？</h2>
+
+<form action="/battle/{{ pokemon_index }}/{{ computer_index }}" method="post">
+
+    {% for skill in user_pokemon.damage.keys() %}
+
+    <button type="submit" name="skill_index" value="{{ loop.index0 }}">
+        {{ skill[0] }}
+    </button>
+
+    {% endfor %}
+
+</form>
+
+{% if user_message %}
+    <p>{{ user_message }}</p>
+{% endif %}
+
+{% if computer_message %}
+    <p>相手の{{ computer_message }}</p>
+{% endif %}
+
+
+{% endblock %}
