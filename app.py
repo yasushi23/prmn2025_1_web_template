@@ -462,6 +462,28 @@ def reset():
     print("===== RESET =====")
     print(dict(session))
     session.clear()
+    session['pokemon_data'] = {
+        'ピカチュウ': {'level': 5, 'max_hp': 100},
+        'ヒトカゲ': {'level': 5, 'max_hp': 90},
+        'ゼニガメ': {'level': 5, 'max_hp': 95},
+        'フシギダネ': {'level': 5, 'max_hp': 90},
+        'ライチュウ': {'level': 10, 'max_hp': 200}
+    }
+
+    session['computer_data'] = {
+        'ピカチュウ': {'level': 5, 'max_hp': 100},
+        'ヒトカゲ': {'level': 5, 'max_hp': 90},
+        'ゼニガメ': {'level': 5, 'max_hp': 95},
+        'フシギダネ': {'level': 5, 'max_hp': 90},
+        'ライチュウ': {'level': 10, 'max_hp': 200}
+    }
+
+    session['pokemon_slots'] = {
+        '0': 'ピカチュウ',
+        '1': 'ヒトカゲ',
+        '2': 'ゼニガメ',
+        '3': 'フシギダネ'
+    }
     print("===== RESET後 =====")
     print(dict(session))
     return redirect(url_for('index'))
